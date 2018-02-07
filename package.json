@@ -1,0 +1,14 @@
+{
+  "name": "react-webpack-config-tutorial",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/abczhijia/react-webpack-config-tutorial",
+  "author": "yishuangxi <yishuangxi@youzan.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack"
+  },
+  "dependencies": {
+    "webpack": "^3.10.0"
+  }
+}
