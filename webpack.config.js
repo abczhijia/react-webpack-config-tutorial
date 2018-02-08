@@ -22,16 +22,30 @@ const config = {
                     fallback: "style-loader",
                     use: "css-loader"
                 })
+            },
+            {
+                test: /\.jsx?$/,
+                exclude: path.resolve(__dirname, 'node_modules'),
+                include: path.resolve(__dirname, 'src'),
+                use: [
+                    {
+                        loader: 'babel-loader', 
+                        options: {
+                            presets: ['react', 'es2015']
+                        }
+                    }
+                ]
             }
         ]
     },
     plugins: [
         new ExtractTextWebpackPlugin('[name]-[chunkhash].css'),
         new HtmlWebpackPlugin({
-            title: 'react webpack config tutorial'
+            title: 'react webpack config tutorial',
+            template: path.resolve(__dirname, 'src', 'index.html')
         }),
         new webpack.optimize.CommonsChunkPlugin({
-            names: ['vendor']
+            names: ['vendor'],
         }),
         new CleanWebpackPlugin(['dist'])
     ]
