@@ -1,11 +1,17 @@
 const path = require('path');
+const webpack = require('webpack');
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 const config = {
-    entry: path.resolve(__dirname, 'src', 'main.js'),
+    entry: {
+        main: path.resolve(__dirname, 'src', 'main.js'),
+        vendor: ['lodash', 'react']
+    },
     output: {
-        filename: 'bundle.js',
+        filename: '[name]-[hash].js',
+
         path: path.resolve(__dirname, 'dist')
     },
     module: {
@@ -20,10 +26,14 @@ const config = {
         ]
     },
     plugins: [
-        new ExtractTextWebpackPlugin('app.css'),
+        new ExtractTextWebpackPlugin('[name]-[chunkhash].css'),
         new HtmlWebpackPlugin({
             title: 'react webpack config tutorial'
-        })
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+            names: ['vendor']
+        }),
+        new CleanWebpackPlugin(['dist'])
     ]
 }
 
