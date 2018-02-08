@@ -1,5 +1,6 @@
 const path = require('path');
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = {
     entry: path.resolve(__dirname, 'src', 'main.js'),
@@ -19,7 +20,10 @@ const config = {
         ]
     },
     plugins: [
-        new ExtractTextWebpackPlugin('app.css')
+        new ExtractTextWebpackPlugin('app.css'),
+        new HtmlWebpackPlugin({
+            title: 'react webpack config tutorial'
+        })
     ]
 }
 
