@@ -1,0 +1,8 @@
+import React from 'react';
+import './header.scss';
+
+export default class Header extends React.Component {
+    render() {
+        return <div className="red" styleName="blue">This is Header Component </div>
+    }
+}

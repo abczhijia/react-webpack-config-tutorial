@@ -1,0 +1,9 @@
+.blue {
+  background-color: blue;
+}
+
+:global {
+  .red {
+    color: red;
+  }
+}
